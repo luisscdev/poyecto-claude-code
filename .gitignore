@@ -1,0 +1,27 @@
+# ---- Java / Maven (backend/) ----
+backend/target/
+*.class
+*.log
+
+# Keep the Maven Wrapper jar tracked (needed for offline wrapper bootstrap)
+!backend/.mvn/wrapper/maven-wrapper.jar
+
+# ---- Node / Vite (frontend/) ----
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/.vite/
+frontend/*.local
+
+# Env files
+frontend/.env
+frontend/.env.*.local
+
+# ---- IDE / OS ----
+.idea/
+*.iml
+*.iws
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db
