@@ -5,6 +5,7 @@ const links = [
   { to: '/medicos', label: 'Médicos' },
   { to: '/especialidades', label: 'Especialidades' },
   { to: '/citas', label: 'Citas' },
+  { to: '/hospitales', label: 'Hospitales' },
 ]
 
 export function Navbar() {

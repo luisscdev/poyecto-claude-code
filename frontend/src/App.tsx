@@ -5,6 +5,7 @@ import { EspecialidadesPage } from './features/especialidades/EspecialidadesPage
 import { MedicosPage } from './features/medicos/MedicosPage'
 import { PacientesPage } from './features/pacientes/PacientesPage'
 import { CitasPage } from './features/citas/CitasPage'
+import { HospitalesPage } from './features/hospitales/HospitalesPage'
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="medicos" element={<MedicosPage />} />
         <Route path="pacientes" element={<PacientesPage />} />
         <Route path="citas" element={<CitasPage />} />
+        <Route path="hospitales" element={<HospitalesPage />} />
       </Route>
     </Routes>
   )

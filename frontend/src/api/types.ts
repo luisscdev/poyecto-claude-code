@@ -70,6 +70,23 @@ export interface CitaInput {
   medicoId: number
 }
 
+export interface Hospital {
+  id: number
+  nombre: string
+  direccion: string
+  ciudad: string
+  telefono: string | null
+  email: string | null
+}
+
+export interface HospitalInput {
+  nombre: string
+  direccion: string
+  ciudad: string
+  telefono?: string
+  email?: string
+}
+
 export interface DashboardSummary {
   pacientes: number
   medicos: number

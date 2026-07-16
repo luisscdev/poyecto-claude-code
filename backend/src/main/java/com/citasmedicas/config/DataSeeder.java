@@ -5,6 +5,8 @@ import com.citasmedicas.cita.CitaRepository;
 import com.citasmedicas.cita.EstadoCita;
 import com.citasmedicas.especialidad.Especialidad;
 import com.citasmedicas.especialidad.EspecialidadRepository;
+import com.citasmedicas.hospital.Hospital;
+import com.citasmedicas.hospital.HospitalRepository;
 import com.citasmedicas.medico.Medico;
 import com.citasmedicas.medico.MedicoRepository;
 import com.citasmedicas.paciente.Paciente;
@@ -24,13 +26,16 @@ public class DataSeeder implements CommandLineRunner {
     private static final Logger log = LoggerFactory.getLogger(DataSeeder.class);
 
     private final EspecialidadRepository especialidadRepository;
+    private final HospitalRepository hospitalRepository;
     private final MedicoRepository medicoRepository;
     private final PacienteRepository pacienteRepository;
     private final CitaRepository citaRepository;
 
-    public DataSeeder(EspecialidadRepository especialidadRepository, MedicoRepository medicoRepository,
-                       PacienteRepository pacienteRepository, CitaRepository citaRepository) {
+    public DataSeeder(EspecialidadRepository especialidadRepository, HospitalRepository hospitalRepository,
+                       MedicoRepository medicoRepository, PacienteRepository pacienteRepository,
+                       CitaRepository citaRepository) {
         this.especialidadRepository = especialidadRepository;
+        this.hospitalRepository = hospitalRepository;
         this.medicoRepository = medicoRepository;
         this.pacienteRepository = pacienteRepository;
         this.citaRepository = citaRepository;
@@ -46,6 +51,15 @@ public class DataSeeder implements CommandLineRunner {
                 new Especialidad("Dermatología", "Diagnóstico y tratamiento de enfermedades de la piel"));
         Especialidad traumatologia = especialidadRepository.save(
                 new Especialidad("Traumatología", "Lesiones del sistema musculoesquelético"));
+
+        hospitalRepository.saveAll(List.of(
+                new Hospital("Hospital Metropolitano", "Av. Mariana de Jesús s/n, Quito", "Quito",
+                        "022345678", "contacto@hospitalmetropolitano.com"),
+                new Hospital("Hospital Vozandes", "Villalengua Oe2-37, Quito", "Quito",
+                        "022997800", "info@hospitalvozandes.com"),
+                new Hospital("Hospital Monte Sinaí", "Autopista Terminal Terrestre, Guayaquil", "Guayaquil",
+                        "042000200", "contacto@hospitalmontesinai.org")
+        ));
 
         Medico drPerez = medicoRepository.save(new Medico(
                 "Carlos", "Pérez", "MED-1001", "0991234567", "carlos.perez@citasmedicas.com", cardiologia));
@@ -91,8 +105,8 @@ public class DataSeeder implements CommandLineRunner {
                         EstadoCita.PROGRAMADA, "Control de crecimiento", pSofia, draGomez)
         ));
 
-        log.info("Datos de ejemplo sembrados: {} especialidades, {} médicos, {} pacientes, {} citas",
-                especialidadRepository.count(), medicoRepository.count(),
+        log.info("Datos de ejemplo sembrados: {} especialidades, {} hospitales, {} médicos, {} pacientes, {} citas",
+                especialidadRepository.count(), hospitalRepository.count(), medicoRepository.count(),
                 pacienteRepository.count(), citaRepository.count());
     }
 }
